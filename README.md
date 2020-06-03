@@ -2,7 +2,7 @@
 
 A single-server multi-client CLI chat interface that can be used for exchanging text messages as well as run system commands.
 
-###Working
+### Working
 
  * Run the __RunMeFirst.py__ file before anything to generate the private and public keys
  * The client text messages and system commands(linux) are randomly selected from the __message.txt__ file
